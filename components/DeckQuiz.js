@@ -38,8 +38,15 @@ class DeckQuiz extends React.Component {
           </Text>
         )}
 
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Text>Answer</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            this.setState({
+              answerVisible: !answerVisible
+            });
+          }}
+        >
+          <Text>{answerVisible ? "The Question" : "The Answer"}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity

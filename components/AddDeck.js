@@ -4,8 +4,7 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
-  StyleSheet,
-  AsyncStorage
+  StyleSheet
 } from "react-native";
 
 import { deleteAlldecks } from "../actions";
@@ -34,10 +33,7 @@ class ScreenAddDeck extends React.Component {
       })
       .then(navigation.goBack());
   };
-  clearAllData = () => {
-    const { dispatch, decks } = this.props;
-    AsyncStorage.getAllKeys().then(keys => AsyncStorage.multiRemove(keys));
-  };
+
   render() {
     const { deckName } = this.state;
 
@@ -54,9 +50,6 @@ class ScreenAddDeck extends React.Component {
         />
         <TouchableOpacity style={styles.button} onPress={this.addDeckHandler}>
           <Text>Add</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this.clearAllData}>
-          <Text>Delete all Decks</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 import { withNavigation } from "react-navigation";
+import { clearNotification, setNotification } from "../utils/api";
 
 class DeckQuiz extends React.Component {
   state = {
@@ -23,6 +24,9 @@ class DeckQuiz extends React.Component {
           </Text>
         </View>
       );
+    }
+    if (currentCard === questions.length) {
+      clearNotification().then(setNotification());
     }
 
     return questions.length !== currentCard ? (
